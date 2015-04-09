@@ -1,6 +1,6 @@
 http = require("socket.http")
 ltn12 = require("ltn12")
-JSON = require("JSON.lua")
+JSON = require("JSON")
 started = 0
 our_id = 0
 hubot_endpoint = os.getenv("TG_HUBOT_URL")
