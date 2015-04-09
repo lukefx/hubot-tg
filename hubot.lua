@@ -1,6 +1,6 @@
 http = require("socket.http")
 ltn12 = require("ltn12")
-JSON = (loadfile 'JSON.lua')()
+JSON = require("JSON.lua")
 started = 0
 our_id = 0
 hubot_endpoint = os.getenv("TG_HUBOT_URL")
@@ -11,18 +11,18 @@ end
 function vardump(value, depth, key)
   local linePrefix = ""
   local spaces = ""
-  
+
   if key ~= nil then
     linePrefix = "["..key.."] = "
   end
-  
+
   if depth == nil then
     depth = 0
   else
     depth = depth + 1
     for i=1, depth do spaces = spaces .. "  " end
   end
-  
+
   if type(value) == 'table' then
     mTable = getmetatable(value)
     if mTable == nil then
@@ -30,12 +30,12 @@ function vardump(value, depth, key)
     else
       print(spaces .."(metatable) ")
         value = mTable
-    end		
+    end
     for tableKey, tableValue in pairs(value) do
       vardump(tableValue, depth, tableKey)
     end
-  elseif type(value)	== 'function' or 
-      type(value)	== 'thread' or 
+  elseif type(value)	== 'function' or
+      type(value)	== 'thread' or
       type(value)	== 'userdata' or
       value		== nil
   then
