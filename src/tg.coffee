@@ -17,7 +17,7 @@ class Tg extends Adapter
           else
             flattened.push line
 
-     request.post 
+     request.post
       url: @host, body: JSON.stringify(str) (err, response, body) ->
         # console.log response.body
         return
@@ -42,6 +42,7 @@ class Tg extends Adapter
     self = @
     # We will listen here to incoming events from tg - inspired on hubot-slack v2
     self.robot.router.post "/hubot_tg/msg_receive", (req, res) ->
+      console.log req.body
       msg = req.body
       room = if msg.to.type == 'user' then self.entityToID(msg.from) else self.entityToID(msg.to)
       from = self.entityToID(msg.from)
