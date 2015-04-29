@@ -71,7 +71,7 @@ function on_msg_receive (msg)
   body = JSON:encode(msg)
   if(msg.from.id ~= our_id) then
     http.request {
-      url = hubot_endpoint .. 'hubot_tg/msg_receive',
+      url = hubot_endpoint .. '/hubot_tg/msg_receive',
       method = 'POST',
       headers = { ["Content-Type"] = "application/json", ["Content-Length"] = body:len()},
       source = ltn12.source.string(JSON:encode(msg))
