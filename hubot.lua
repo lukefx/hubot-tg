@@ -5,10 +5,7 @@ ltn12 = require("ltn12")
 JSON = require('JSON')
 started = 0
 our_id = 0
-hubot_endpoint = os.getenv("HEROKU_URL")
-if hubot_endpoint == nil then
-  hubot_endpoint = "http://localhost:"..os.getenv("PORT")
-end
+hubot_endpoint = "http://localhost:"..os.getenv("PORT")
 
 function vardump(value, depth, key)
   local linePrefix = ""
