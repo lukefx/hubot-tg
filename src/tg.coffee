@@ -25,7 +25,7 @@ class Tg extends Adapter
   bindCli: ->
   
     args = [
-      '-k', '/etc/tg-server.pub',
+      '-k', '/app/vendor/tg/tg-server.pub',
       '-s', "#{__dirname}/../hubot.lua",
       '-S', @socket,
       '-W',
