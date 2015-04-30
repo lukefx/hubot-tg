@@ -36,11 +36,12 @@ class Tg extends Adapter
     cli = prog.spawn 'telegram-cli', args, { detached: true }
     cli.unref()
     
-    cli.stdout.on 'data', (data) ->
-      console.log data.toString().replace(/\r?\n/g, '')
+    # For debug purpose
+    # cli.stdout.on 'data', (data) ->
+    #   console.log data.toString().replace(/\r?\n/g, '')
       
-    cli.stderr.on 'data', (data) ->
-      console.log data.toString().replace(/\r?\n/g, '')
+    # cli.stderr.on 'data', (data) ->
+    #   console.log data.toString().replace(/\r?\n/g, '')
       
     cli.on 'close', (code) ->
       console.log "*** Cli exit with code: #{code}"
