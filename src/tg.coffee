@@ -10,7 +10,7 @@ class Tg extends Adapter
 
   constructor: (robot) ->  
     @robot = robot
-    @socket = "/tmp/#{Date.now()}.sock"
+    @socket = "#{Date.now()}.sock"
     @imageExtensions = [".jpg", ".jpeg", ".png", ".gif"]
     @tempdir = process.env['HUBOT_TG_TMPDIR'] || '/tmp/tg'
 
@@ -37,11 +37,11 @@ class Tg extends Adapter
     cli.unref()
     
     # For debug purpose
-    # cli.stdout.on 'data', (data) ->
-    #   console.log data.toString().replace(/\r?\n/g, '')
+    cli.stdout.on 'data', (data) ->
+      console.log data.toString().replace(/\r?\n/g, '')
       
-    # cli.stderr.on 'data', (data) ->
-    #   console.log data.toString().replace(/\r?\n/g, '')
+    cli.stderr.on 'data', (data) ->
+      console.log data.toString().replace(/\r?\n/g, '')
       
     cli.on 'close', (code) ->
       console.log "*** Cli exit with code: #{code}"
